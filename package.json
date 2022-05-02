@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@lrnwebcomponents/lrnsys-comment": "4.0.12",
+    "@lrnwebcomponents/rpg-character": "^4.0.24",
     "lit": "2.2.0",
     "node-fetch": "^3.1.0",
     "planetscale-node": "^0.3.0"

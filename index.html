@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="IST Vercel app example">
-  <title>Vercel example</title>
+  <meta name="Description" content="Roll-Call">
+  <title>Roll-Call example</title>
 
   <base href="/">
 
@@ -18,21 +18,26 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
-    x-weather {
-      border: 1px solid black;
+    roll-call {
+      border: 1px solid rgb(255, 255, 255);
+      display: block;
+      position: absolute;
+      right: 0;
     }
   </style>
   <title>ist-vercel-demo</title>
 </head>
 
 <body>
-  <x-weather city="pittsburgh"></x-weather>
-  <x-weather city="boston"></x-weather>
-  <x-weather city="portland"></x-weather>
+  <script type="module">
+    import './src/RollCall.js';
+  </script>
+  <roll-call></roll-call>
 
   <textarea id="response" rows="50" cols="50"></textarea>
   <button id="refresh">Click to refresh</button>
   <button id="user">Add user</button>
+  
   <script>
     function updateData() {
       console.log("here");
@@ -54,19 +59,6 @@
       fetch(`/api/addUser?${queryString}`).then(res => res.json()).then((data) => {
         // update the data bc we just got a result that we added a user
         updateData();
-      });
-    });
-  </script>
-
-  <lrnsys-comment-list></lrnsys-comment-list>
-
-  <script type="module" src="./src/x-weather.js"></script>
-  <script type="module" defer async>
-    // comment list
-    await import("@lrnwebcomponents/lrnsys-comment/lib/lrnsys-comment-list.js").then(() => {
-      fetch(`/api/comments?op=GET`).then(res => res.json()).then((comments) => 
-      {
-        document.querySelector("lrnsys-comment-list").comments = comments;
       });
     });
   </script>
